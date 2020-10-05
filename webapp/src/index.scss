@@ -1,0 +1,20 @@
+/* purgecss start ignore */
+
+@tailwind base;
+
+// :: add specific base styles here ---
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;700");
+
+body {
+  color: #332f33;
+}
+
+// :: --- /base styles ---
+
+@tailwind components;
+
+/* purgecss end ignore */
+@tailwind utilities;
+
+/** -- **/

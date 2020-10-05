@@ -1,0 +1,17 @@
+parser: babel-eslint
+parserOptions:
+  sourceType: module
+  ecmaVersion: 2021
+
+extends:
+  - plugin:unicorn/recommended
+  - plugin:prettier/recommended
+
+rules:
+  unicorn/prevent-abbreviations:
+    - error
+    - whitelist:
+        env: true
+        params: true
+        props: true
+        ref: true

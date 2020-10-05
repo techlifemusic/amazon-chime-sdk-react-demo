@@ -1,0 +1,19 @@
+---
+Resources:
+  ChimeMeetingsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.DDB_ChimeMeetingsTable}
+      BillingMode: PAY_PER_REQUEST
+
+      AttributeDefinitions:
+        - AttributeName: meetingid
+          AttributeType: S
+        - AttributeName: meetinghash
+          AttributeType: S
+
+      KeySchema:
+        - AttributeName: meetingid
+          KeyType: HASH
+        - AttributeName: meetinghash
+          KeyType: RANGE

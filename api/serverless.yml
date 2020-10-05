@@ -1,0 +1,89 @@
+---
+service: chime-sdk-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  stage: dev
+  region: ap-southeast-1
+
+  environment:
+    APP_REGION: ${self:provider.region}
+    CHIME_ENDPOINT_URL: https://service.chime.aws.amazon.com
+    CHIME_MEETING_REGION: ${self:provider.region}
+
+    DDB_CHIMEMEETINGS: ${self:custom.DDB_ChimeMeetingsTable}
+
+plugins:
+  - serverless-bundle
+  - serverless-plugin-common-excludes
+  - serverless-plugin-include-dependencies
+  - serverless-stack-output
+
+package:
+  individually: true
+  excludeDevDependencies: false
+
+custom:
+  appname: chimeapi
+  stage: ${opt:stage, self:provider.stage}
+  prefix: ${self:custom.appname}-${self:custom.stage}
+
+  DDB_ChimeMeetingsTable: ${self:custom.prefix}-meetings
+
+  # :: ---
+  output:
+    file: ./stack-outputs.json
+
+functions:
+  ping:
+    handler: src/handlers/ping.handler
+    environment:
+      API_PING_RESPONSE: pong
+    events:
+      - http:
+          path: ping
+          method: GET
+          cors: true
+
+  createmeeting:
+    handler: src/handlers/createmeeting.handler
+    role: ApiEndpointsRole
+    events:
+      - http:
+          path: meetings
+          method: POST
+          cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: CognitoGatewayAuthorizer
+
+  getmeeting:
+    handler: src/handlers/getmeeting.handler
+    role: ApiEndpointsRole
+    events:
+      - http:
+          path: meetings/{token}/{hash}
+          method: GET
+          cors: true
+          request:
+            parameters:
+              paths:
+                token: true
+                hash: true
+
+  joinmeeting:
+    handler: src/handlers/joinmeeting.handler
+    role: ApiEndpointsRole
+    events:
+      - http:
+          path: sessions/join
+          method: POST
+          cors: true
+
+resources:
+  - ${file(./src/resources/clientauth.yml)}
+  - ${file(./src/resources/functionroles.yml)}
+  - ${file(./src/resources/datastore.yml)}

@@ -1,0 +1,34 @@
+{
+  "name": "chimesdk-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "https://aws.amazon.com/asl",
+  "author": "Richard Neil Ilagan (Carding) <705310+richardneililagan@users.noreply.github.com>",
+  "private": true,
+  "devDependencies": {
+    "eslint": "7.10.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-unicorn": "22.0.0",
+    "prettier": "2.1.2",
+    "serverless": "2.4.0",
+    "serverless-bundle": "3.1.0",
+    "serverless-plugin-common-excludes": "3.0.0",
+    "serverless-plugin-include-dependencies": "4.1.0",
+    "serverless-stack-output": "0.2.3"
+  },
+  "scripts": {
+    "package": "sls package",
+    "deploy": "sls deploy",
+    "lint": "eslint 'src/**/*.{js,jsx}' -f stylish",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "volta": {
+    "node": "12.18.4",
+    "yarn": "1.22.5"
+  },
+  "dependencies": {
+    "aws-sdk": "2.764.0",
+    "uuid": "8.3.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "jsx": "preserve",
+    "target": "es2020",
+    "module": "commonJS"
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

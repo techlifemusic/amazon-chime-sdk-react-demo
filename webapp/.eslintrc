@@ -1,0 +1,33 @@
+parser: babel-eslint
+parserOptions:
+  sourceType: module
+  ecmaVersion: 2021
+  ecmaFeatures:
+    jsx: true
+
+extends:
+  - plugin:react/recommended
+  - plugin:unicorn/recommended
+  - plugin:prettier/recommended
+
+settings:
+  react:
+    version: detect
+
+rules:
+  unicorn/filename-case:
+    - error
+    - cases:
+        kebabCase: true # :: standard file naming convention
+        pascalCase: true # :: for components
+      
+      ignore:
+        - setupTests.(j|t)s$ # :: jest configuration file
+
+  unicorn/prevent-abbreviations:
+    - error
+    - whitelist:
+        env: true
+        params: true
+        props: true
+        ref: true

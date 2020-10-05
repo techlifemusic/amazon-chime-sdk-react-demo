@@ -1,0 +1,58 @@
+{
+  "name": "chimesdk-webapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "https://aws.amazon.com/asl",
+  "author": "Richard Neil Ilagan (Carding) <705310+richardneililagan@users.noreply.github.com>",
+  "private": true,
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.11.4",
+    "@testing-library/react": "11.0.4",
+    "@testing-library/user-event": "12.1.6",
+    "customize-cra": "1.0.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-unicorn": "22.0.0",
+    "node-sass": "4.14.1",
+    "prettier": "2.1.2",
+    "react-app-rewired": "2.1.6",
+    "react-scripts": "3.4.3"
+  },
+  "dependencies": {
+    "@aws-amplify/ui-react": "0.2.22",
+    "amazon-chime-sdk-js": "1.19.0",
+    "aws-amplify": "3.3.2",
+    "chimesdk-api": "*",
+    "clsx": "1.1.1",
+    "history": "5.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-helmet": "6.1.0",
+    "react-router-dom": "6.0.0-beta.0",
+    "tailwindcss": "1.8.10"
+  },
+  "scripts": {
+    "start": "SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-app-rewired build",
+    "test": "SKIP_PREFLIGHT_CHECK=true react-app-rewired test --silent",
+    "eject": "react-scripts eject",
+    "lint": "eslint 'src/**/*.{js,jsx}' -f stylish",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "volta": {
+    "node": "12.18.4",
+    "yarn": "1.22.5"
+  }
+}
